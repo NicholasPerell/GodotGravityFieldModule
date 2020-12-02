@@ -1,10 +1,10 @@
 #include "register_types.h"
 #include "core/class_db.h"
-#include "2DMeshSubdivisionNode.h"
+//#include "2DMeshSubdivisionNode.h"
 
-void register_Godot-Gravity-Field-Module_types(){
+void register_GodotGravityFieldModule_types(){
 	//ClassDB::register_class<SubdivisionNode>();
 }
 
-void unregister_Godot-Gravity-Field-Module_types() {
+void unregister_GodotGravityFieldModule_types() {
 }

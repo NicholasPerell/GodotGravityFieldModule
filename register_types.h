@@ -1,5 +1,5 @@
-void register_Godot-Gravity-Field-Module_types();
-void unregister_Godot-Gravity-Field-Module_types();
+void register_GodotGravityFieldModule_types();
+void unregister_GodotGravityFieldModule_types();
 
 /*
 	void register_MODULNAME_types();
