@@ -1,28 +1,17 @@
 #pragma once
 #include "scene/2d/area_2d.h"
+
+class RigidBody2D;
+
 class GravityField2D : public Area2D {
-	GDCLASS(SubdivisionNode, MeshIhnstance2D);
+	GDCLASS(GravityField2D, Area2D);
 
-protected:
-	int numSubdivisions;
-	int numTriangles;
-	meshparse::mesh *he_mesh;
-	//original
-	PoolVector2Array vertices;
-	PoolColorArray colors;
-	//updated
-	PoolVector2Array _vertices;
-	PoolColorArray _colors;
-
-	bool redraw;
 
 public:
-	SubdivisionNode();
+	GravityField2D();
+	virtual Vector2 calcForce(RigidBody2D *body) = 0;
+
+
 	void _notification(int p_what);
-	void _update();
-	void _ready();
-	void _draw();
-	void _input(InputEvent *e);
-	void catmull_clark(int numDivisions);
+	void applyForce();
 };
-#endif
