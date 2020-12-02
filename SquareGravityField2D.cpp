@@ -1,6 +1,7 @@
 #include "SquareGravityField2D.h"
 #include <scene\2d\physics_body_2d.h>
 #include <core\engine.h>
+#include <cmath>
 
 
 Vector2 SquareGravityField2D::calcForce(RigidBody2D* body) {
@@ -11,7 +12,7 @@ Vector2 SquareGravityField2D::calcForce(RigidBody2D* body) {
 	difference.y /= height;
 
 	Vector2 ret;
-	if (difference.x > difference.y)
+	if (std::abs(difference.x) > std::abs(difference.y))
 	{
 		ret = Vector2(-difference.x, 0);
 		ret.normalize();
