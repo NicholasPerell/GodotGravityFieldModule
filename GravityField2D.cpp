@@ -33,7 +33,7 @@ void GravityField2D::applyForce() {
 		{
 			RigidBody2D* body = Object::cast_to<RigidBody2D>(arr[i]);
 			body->add_central_force(calcForce(body));
-		//}
+		}
 	}
 }
 
