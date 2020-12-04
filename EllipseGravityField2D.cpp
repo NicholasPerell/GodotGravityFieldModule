@@ -6,7 +6,7 @@ void EllipseGravityField2D::_bind_methods()
 	ClassDB::bind_method(D_METHOD("setAxes", "a"), &EllipseGravityField2D::setAxes);
 	ClassDB::bind_method(D_METHOD("getAxes"), &EllipseGravityField2D::getAxes);
 
-	ADD_PROPERTY(PropertyInfo(Variant::VECTOR2, "axes", PROPERTY_HINT_RANGE, "0,1024,0.001"), "setHeight", "getHeight");
+	ADD_PROPERTY(PropertyInfo(Variant::VECTOR2, "axes", PROPERTY_HINT_RANGE, "0,1024,0.001"), "setAxes", "getAxes");
 }
 
 Vector2 EllipseGravityField2D::calcForce(RigidBody2D* body)
