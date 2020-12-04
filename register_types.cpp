@@ -5,6 +5,7 @@
 #include "Curve2D.h"
 #include "Cube3D.h"
 #include "SquareGravityField2D.h"
+#include "EllipseGravityField2D.h"
 #include "Disk3D.h"
 #include "Elipsoid.h"
 #include "Torus.h"
@@ -13,6 +14,7 @@
 
 void register_GodotGravityFieldModule_types(){
 	ClassDB::register_class<SquareGravityField2D>();
+	ClassDB::register_class<EllipseGravityField2D>();
 	ClassDB::register_class<ArchGravityField>();
 	ClassDB::register_class<CurveGravityField2D>();
 	ClassDB::register_class<CubeGravityField>();

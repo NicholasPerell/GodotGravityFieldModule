@@ -1,6 +1,7 @@
 #include "GravityField2D.h"
 #include <scene\2d\physics_body_2d.h>
 #include <core\engine.h>
+#include <servers/physics_2d/physics_2d_server_sw.h>
 
 
 GravityField2D::GravityField2D() {
@@ -28,8 +29,8 @@ void GravityField2D::applyForce() {
 	Array arr = get_overlapping_bodies();
 	for (int i = 0; i < arr.size(); i++) 
 	{
-		//if (PhysicsServer::get_singleton()->body_get_mode(Object::cast_to<PhysicsBody2D>(arr[i])->get_rid()) == Physics2DServer::BODY_MODE_RIGID)
-		//{
+		if (Physics2DServerSW::get_singleton()->body_get_mode(Object::cast_to<PhysicsBody2D>(arr[i])->get_rid()) == Physics2DServer::BODY_MODE_RIGID)
+		{
 			RigidBody2D* body = Object::cast_to<RigidBody2D>(arr[i]);
 			body->add_central_force(calcForce(body));
 		//}
