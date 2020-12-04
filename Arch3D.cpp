@@ -1,10 +1,10 @@
-#include "Torus.h"
+#include "Arch3D.h"
 #include <core\engine.h>
 #include <scene\3d\physics_body.h>
 #include <cmath>
 
-Vector3 TorusGravityField::calcForce(RigidBody *body) {
-
+Vector3 ArchGravityField::calcForce(RigidBody *body) {
+	
 	Vector3 ret;
 
 	//TODO: Add calculations here
@@ -12,18 +12,19 @@ Vector3 TorusGravityField::calcForce(RigidBody *body) {
 	return ret;
 }
 
+
 //TODO: Add getters and setters for prameters
-void TorusGravityField::setA(float aPram) {
+void ArchGravityField::setA(float aPram) {
 	a = aPram;
 }
-float TorusGravityField::getA() {
+float ArchGravityField::getA() {
 	return a;
 }
 
 //Bind getters and setters and add paramters as property
-void TorusGravityField::_bind_methods() {
-	ClassDB::bind_method(D_METHOD("setA", "h"), &TorusGravityField::setA);
-	ClassDB::bind_method(D_METHOD("getA"), &TorusGravityField::getA);
+void ArchGravityField::_bind_methods() {
+	ClassDB::bind_method(D_METHOD("setA", "h"), &ArchGravityField::setA);
+	ClassDB::bind_method(D_METHOD("getA"), &ArchGravityField::getA);
 
 	ADD_PROPERTY(PropertyInfo(Variant::REAL, "a", PROPERTY_HINT_RANGE, "-1024,1024,0.001"), "setA", "getA");
 }

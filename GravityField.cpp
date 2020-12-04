@@ -30,3 +30,17 @@ void GravityField::applyForce() {
 		body->add_central_force(calcForce(body));
 	}
 }
+
+float GravityField::getGravityScale() {
+	return gravityScale;
+}
+void GravityField::setGravityScale(float s) {
+	gravityScale = s;
+}
+
+void GravityField::_bind_methods() {
+	ClassDB::bind_method(D_METHOD("setGravityScale", "s"), &GravityField::setGravityScale);
+	ClassDB::bind_method(D_METHOD("getGravityScale"), &GravityField::getGravityScale);
+
+	ADD_PROPERTY(PropertyInfo(Variant::REAL, "Gravity Scale", PROPERTY_HINT_RANGE, "0,1024,0.001"), "setGravityScale", "getGravityScale");
+}

@@ -41,8 +41,6 @@ float SquareGravityField2D::getWidth() {
 	return width;
 }
 
-
-
 void SquareGravityField2D::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("setHeight", "h"), &SquareGravityField2D::setHeight);
 	ClassDB::bind_method(D_METHOD("getHeight"), &SquareGravityField2D::getHeight);

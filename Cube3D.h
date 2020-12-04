@@ -3,8 +3,8 @@
 
 class RigidBody;
 
-class TorusGravityField : public GravityField {
-	GDCLASS(TorusGravityField, GravityField);
+class CubeGravityField : public GravityField {
+	GDCLASS(CubeGravityField, GravityField);
 
 	float a;
 
