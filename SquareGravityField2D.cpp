@@ -26,3 +26,31 @@ Vector2 SquareGravityField2D::calcForce(RigidBody2D* body) {
 	}
 	return ret;
 }
+
+void SquareGravityField2D::setHeight(float h) {
+	height = h;
+}
+float SquareGravityField2D::getHeight() {
+	return height;
+}
+
+void SquareGravityField2D::setWidth(float w) {
+	width = w;
+}
+float SquareGravityField2D::getWidth() {
+	return width;
+}
+
+
+
+void SquareGravityField2D::_bind_methods() {
+	ClassDB::bind_method(D_METHOD("setHeight", "h"), &SquareGravityField2D::setHeight);
+	ClassDB::bind_method(D_METHOD("getHeight"), &SquareGravityField2D::getHeight);
+
+	ADD_PROPERTY(PropertyInfo(Variant::REAL, "height", PROPERTY_HINT_RANGE, "0,1024,0.001"), "setHeight", "getHeight");
+
+	ClassDB::bind_method(D_METHOD("setWidth", "w"), &SquareGravityField2D::setWidth);
+	ClassDB::bind_method(D_METHOD("getWidth"), &SquareGravityField2D::getWidth);
+
+	ADD_PROPERTY(PropertyInfo(Variant::REAL, "width", PROPERTY_HINT_RANGE, "0,1024,0.001"), "setWidth", "getWidth");
+}
