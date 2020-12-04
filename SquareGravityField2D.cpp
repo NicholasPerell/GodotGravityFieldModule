@@ -22,7 +22,7 @@ Vector2 SquareGravityField2D::calcForce(RigidBody2D* body) {
 	{
 		ret = Vector2(0,-difference.y);
 		ret.normalize();
-		ret *= gravityScale;
+		ret *= gravityScale * body->get_gravity_scale();
 	}
 	return ret;
 }
