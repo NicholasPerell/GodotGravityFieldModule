@@ -1,15 +1,15 @@
 #include "register_types.h"
 #include "core/class_db.h"
 #include "GravityField2D.h"
-#include "Arch3D.h"
-#include "Curve2D.h"
-#include "Cube3D.h"
+#include "ArchGravityField.h"
+#include "CurveGravityField2D.h"
+#include "CubeGravityField.h"
 #include "SquareGravityField2D.h"
 #include "EllipseGravityField2D.h"
-#include "Disk3D.h"
-#include "Elipsoid.h"
-#include "Torus.h"
-#include "Wire3D.h"
+#include "DiskGravityField.h"
+#include "ElipsoidGravityField.h"
+#include "TorusGravityField.h"
+#include "WireGravityField2D.h"
 
 
 void register_GodotGravityFieldModule_types(){

@@ -1,4 +1,4 @@
-#include "Curve2D.h"
+#include "CurveGravityField2D.h"
 #include <core\engine.h>
 #include <scene\2d\physics_body_2d.h>
 #include <cmath>

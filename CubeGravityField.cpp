@@ -1,4 +1,4 @@
-#include "Cube3D.h"
+#include "CubeGravityField.h"
 #include <core\engine.h>
 #include <scene\3d\physics_body.h>
 #include <cmath>

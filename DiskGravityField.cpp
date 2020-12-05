@@ -1,4 +1,4 @@
-#include "Disk3D.h"
+#include "DiskGravityField.h"
 #include <core\engine.h>
 #include <scene\3d\physics_body.h>
 #include <cmath>

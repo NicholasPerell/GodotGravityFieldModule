@@ -1,4 +1,4 @@
-#include "Torus.h"
+#include "TorusGravityField.h"
 #include <core\engine.h>
 #include <scene\3d\physics_body.h>
 #include <cmath>
