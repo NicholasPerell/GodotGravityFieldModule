@@ -25,9 +25,11 @@ void GravityField::applyForce() {
 	Array arr = get_overlapping_bodies();
 
 	for (int i = 0; i < arr.size(); i++) {
-		RigidBody *body = Object::cast_to<RigidBody>(arr[i]);
-
-		body->add_central_force(calcForce(body));
+		if (Physics2DServer::get_singleton()->body_get_mode(Object::cast_to<PhysicsBody>(arr[i])->get_rid()) == PhysicsServer::BODY_MODE_RIGID)
+		{
+			RigidBody* body = Object::cast_to<RigidBody>(arr[i]);
+			body->add_central_force(calcForce(body));
+		}
 	}
 }
 
