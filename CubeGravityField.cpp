@@ -2,12 +2,21 @@
 #include <core\engine.h>
 #include <scene\3d\physics_body.h>
 #include <cmath>
+#include <iostream>
 
 Vector3 CubeGravityField::calcForce(RigidBody *body) {
-
+	std::cout << "This is getting called?\n";
 	Vector3 ret;
+	Vector3 bodyPos = body->get_translation();
+	Vector3 localSpace = bodyPos - get_translation();
 
-	//TODO: Add calculations here
+	if (localSpace.x > length / 2 && localSpace.y > width / 2 && localSpace.z > height / 2) {
+		//Not inside cube
+		std::cout << "Not in the cube\n";
+		std::cout << "Local space coords are " << localSpace.x << " " << localSpace.y << " " << localSpace.z << "\n";
+		ret = -localSpace;
+	}
+	ret = -localSpace;
 
 	return ret;
 }
