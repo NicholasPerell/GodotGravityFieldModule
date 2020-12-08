@@ -15,7 +15,7 @@ Vector2 EllipseGravityField2D::calcForce(RigidBody2D* body)
 	diff = Vector2(diff.x / axes.x, diff.y / axes.y);
 	diff.normalize();
 	diff *= gravityScale * body->get_gravity_scale();
-	return Vector2();
+	return diff;
 }
 
 void EllipseGravityField2D::setAxes(Vector2 a)
