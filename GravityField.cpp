@@ -1,6 +1,7 @@
 #include "GravityField.h"
 #include <core\engine.h>
 #include <scene\3d\physics_body.h>
+#include <servers/physics/physics_server_sw.h>
 
 GravityField::GravityField() {
 }
@@ -25,7 +26,7 @@ void GravityField::applyForce() {
 	Array arr = get_overlapping_bodies();
 
 	for (int i = 0; i < arr.size(); i++) {
-		if (Physics2DServer::get_singleton()->body_get_mode(Object::cast_to<PhysicsBody>(arr[i])->get_rid()) == PhysicsServer::BODY_MODE_RIGID)
+		if (PhysicsServerSW::get_singleton()->body_get_mode(Object::cast_to<PhysicsBody>(arr[i])->get_rid()) == PhysicsServer::BODY_MODE_RIGID)
 		{
 			RigidBody* body = Object::cast_to<RigidBody>(arr[i]);
 			body->add_central_force(calcForce(body));
