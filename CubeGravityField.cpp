@@ -21,7 +21,7 @@ Vector3 CubeGravityField::calcForce(RigidBody *body) {
 	
 	
 	if (std::abs(difference.x) > std::abs(difference.y) && std::abs(difference.x) > std::abs(difference.z)) {
-		ret = Vector3(-difference.x, 0, 0);
+		ret = Vector3(difference.x, 0, 0);
 
 	} else if (std::abs(difference.y) > std::abs(difference.x) && std::abs(difference.y) > std::abs(difference.z)) {
 		ret = Vector3(0, difference.y, 0);
