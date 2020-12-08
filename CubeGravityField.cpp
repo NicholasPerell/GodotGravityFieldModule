@@ -5,18 +5,37 @@
 #include <iostream>
 
 Vector3 CubeGravityField::calcForce(RigidBody *body) {
-	std::cout << "This is getting called?\n";
 	Vector3 ret;
 	Vector3 bodyPos = body->get_translation();
-	Vector3 localSpace = bodyPos - get_translation();
+	Vector3 difference = get_translation() - bodyPos;
+	
 
-	if (localSpace.x > length / 2 && localSpace.y > width / 2 && localSpace.z > height / 2) {
-		//Not inside cube
-		std::cout << "Not in the cube\n";
-		std::cout << "Local space coords are " << localSpace.x << " " << localSpace.y << " " << localSpace.z << "\n";
-		ret = -localSpace;
+
+
+	std::cout << "x: "<<difference.x << "y:" << difference.y << "z:"<< difference.z << "\n";
+
+
+	difference.x /= width;
+	difference.y /= height;
+	difference.z /= length;
+	
+	
+	if (std::abs(difference.x) > std::abs(difference.y) && std::abs(difference.x) > std::abs(difference.z)) {
+		ret = Vector3(-difference.x, 0, 0);
+
+	} else if (std::abs(difference.y) > std::abs(difference.x) && std::abs(difference.y) > std::abs(difference.z)) {
+		ret = Vector3(0, difference.y, 0);
+	} else {
+		ret = Vector3(0, 0, difference.z);
 	}
-	ret = -localSpace;
+	
+	
+
+	std::cout << "Ret x" << ret.x << " y" << ret.y << " z" << ret.z << "\n";
+	ret.normalize();
+	ret *= gravityScale;
+
+	
 
 	return ret;
 }

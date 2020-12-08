@@ -15,15 +15,15 @@ Vector2 SquareGravityField2D::calcForce(RigidBody2D* body) {
 	if (std::abs(difference.x) > std::abs(difference.y))
 	{
 		ret = Vector2(-difference.x, 0);
-		ret.normalize();
-		ret *= gravityScale;
 	}
 	else
 	{
 		ret = Vector2(0,-difference.y);
-		ret.normalize();
-		ret *= gravityScale * body->get_gravity_scale();
 	}
+
+	ret.normalize();
+	ret *= gravityScale;
+
 	return ret;
 }
 
