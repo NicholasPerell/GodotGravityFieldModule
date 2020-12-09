@@ -29,7 +29,7 @@ void GravityField::applyForce() {
 		if (PhysicsServerSW::get_singleton()->body_get_mode(Object::cast_to<PhysicsBody>(arr[i])->get_rid()) == PhysicsServer::BODY_MODE_RIGID)
 		{
 			RigidBody* body = Object::cast_to<RigidBody>(arr[i]);
-			body->add_central_force(calcForce(body));
+			body->apply_central_impulse(calcForce(body) * get_physics_process_delta_time());
 		}
 	}
 }

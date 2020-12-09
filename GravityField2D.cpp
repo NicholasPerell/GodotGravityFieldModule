@@ -24,14 +24,15 @@ void GravityField2D::_notification(int p_what) {
 }
 
 
-void GravityField2D::applyForce() {
+void GravityField2D::applyForce() 
+{
 	Array arr = get_overlapping_bodies();
 	for (int i = 0; i < arr.size(); i++) 
 	{
 		if (Physics2DServerSW::get_singleton()->body_get_mode(Object::cast_to<PhysicsBody2D>(arr[i])->get_rid()) == Physics2DServer::BODY_MODE_RIGID)
 		{
 			RigidBody2D* body = Object::cast_to<RigidBody2D>(arr[i]);
-			body->add_central_force(calcForce(body));
+			body->apply_central_impulse(calcForce(body) * get_physics_process_delta_time());
 		}
 	}
 }
