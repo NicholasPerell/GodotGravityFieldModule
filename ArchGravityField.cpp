@@ -5,12 +5,17 @@
 
 Vector3 ArchGravityField::calcForce(RigidBody *body) {
 	
-	Vector3 ret = body->get_translation() - get_translation();
-	ret.rotate(eulerAngles, 1);
+	Vector3 ret = get_translation() - body->get_translation();
+
+	/*ret.rotate(Vector3(0,0,1),Math::deg2rad(eulerAngles.z));
+	ret.rotate(Vector3(0,1,0),Math::deg2rad(eulerAngles.y));
+	ret.rotate(Vector3(1,0,0),Math::deg2rad(eulerAngles.x));*/
 
 	ret = Vector3(ret.x / axes.x, ret.y / axes.y,0);
 
-	ret.rotate(-eulerAngles, 1);
+	/*ret.rotate(Vector3(1, 0, 0), Math::deg2rad(-eulerAngles.x));
+	ret.rotate(Vector3(0, 1, 0), Math::deg2rad(-eulerAngles.y));
+	ret.rotate(Vector3(0, 0, 1), Math::deg2rad(-eulerAngles.z));*/
 	ret.normalize();
 	ret *= gravityScale * body->get_gravity_scale();
 	return ret;

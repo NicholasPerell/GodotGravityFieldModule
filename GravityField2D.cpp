@@ -5,7 +5,6 @@
 
 
 GravityField2D::GravityField2D() {
-
 }
 
 void GravityField2D::_notification(int p_what) {
@@ -48,5 +47,5 @@ void GravityField2D::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("setGravityScale", "s"), &GravityField2D::setGravityScale);
 	ClassDB::bind_method(D_METHOD("getGravityScale"), &GravityField2D::getGravityScale);
 
-	ADD_PROPERTY(PropertyInfo(Variant::REAL, "Gravity Scale", PROPERTY_HINT_RANGE, "0,1024,0.001"), "setGravityScale", "getGravityScale");
+	ADD_PROPERTY(PropertyInfo(Variant::REAL, "Gravity Scale", PROPERTY_HINT_RANGE, "-1024,1024,0.001"), "setGravityScale", "getGravityScale");
 }
