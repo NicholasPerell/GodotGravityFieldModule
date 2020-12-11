@@ -18,8 +18,7 @@ Vector2 WireGravityField2D::calcForce(RigidBody2D *body) {
 
 	float x = bodyPos.x - a.x;
 	float y = bodyPos.y - b.y;
-
-	float angle = atan(y / x);
+	float angle = atan2f(x, y);
 
 	std::cout << "x is " << x << " y " << y << " angle " << angle << std::endl;
 
