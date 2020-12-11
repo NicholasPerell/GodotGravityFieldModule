@@ -21,7 +21,7 @@ void register_GodotGravityFieldModule_types(){
 	ClassDB::register_class<DiskGravityField>();
 	ClassDB::register_class<ElipsoidGravityField>();
 	ClassDB::register_class<TorusGravityField>();
-	ClassDB::register_class<WireGravityField>();
+	ClassDB::register_class<WireGravityField2D>();
 }
 
 void unregister_GodotGravityFieldModule_types() {
