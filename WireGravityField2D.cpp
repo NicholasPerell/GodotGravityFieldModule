@@ -3,26 +3,44 @@
 #include <scene\3d\physics_body.h>
 #include <cmath>
 #include <iostream>
+#include <scene\2d\physics_body_2d.h>
 
 Vector2 WireGravityField2D::calcForce(RigidBody2D *body) {
-
+	Point2 bodyPos = body->get_global_position();
 	Vector2 ret;
 
 	Vector2 slope = (b - a);
 	slope.normalize();
 	Vector2 perpSlope = -slope;
-
+	std::cout << "Slope: " << slope.x << " " << slope.y << std::endl;
 	std::cout << "Perpindicular slope: " << perpSlope.x << " " << perpSlope.y << std::endl;
 	ret = perpSlope * gravityScale;
 
-	
+	float x = bodyPos.x - a.x;
+	float y = bodyPos.y - b.y;
+
+	float angle = atan(y / x);
+
+	std::cout << "x is " << x << " y " << y << " angle " << angle << std::endl;
+
+	float distance = sin(angle) * x;
+	std::cout << "Distance between point and line is " << distance << std::endl;
+
+	//ret *= distance;
+
+	std::cout << "Ret is " << ret.x << " " << ret.y << std::endl;
+
+	//Split distnace into components
+	float distAngle = 90 - (90 - angle);
+
+	float distX = cos(angle) * distance;
+	float distY = sin(angle) * distance;
 
 
-	//TODO: Add calculations here
 
-	//std::cout << theLine.get_ref_ptr;
+	std::cout << "Distance: " << distX << " " << distY << std::endl;
 
-	return ret;
+	return Vector2(distX, distY);
 }
 
 void WireGravityField2D::set_a(const Vector2 &p_a) {
