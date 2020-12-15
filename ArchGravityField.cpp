@@ -4,18 +4,20 @@
 #include <cmath>
 
 Vector3 ArchGravityField::calcForce(RigidBody *body) {
-	
-	Vector3 ret = get_translation() - body->get_translation();
+	//Vector3 ret = get_translation() - body->get_translation();
+	Vector3 ret = get_global_transform().origin - body->get_global_transform().origin;
 
-	/*ret.rotate(Vector3(0,0,1),Math::deg2rad(eulerAngles.z));
+
+	//ROTATE NEEDS TO BE FIXED FOR 3D
+	ret.rotate(Vector3(0,0,1),Math::deg2rad(eulerAngles.z));
 	ret.rotate(Vector3(0,1,0),Math::deg2rad(eulerAngles.y));
-	ret.rotate(Vector3(1,0,0),Math::deg2rad(eulerAngles.x));*/
+	ret.rotate(Vector3(1,0,0),Math::deg2rad(eulerAngles.x));
 
 	ret = Vector3(ret.x / axes.x, ret.y / axes.y,0);
 
-	/*ret.rotate(Vector3(1, 0, 0), Math::deg2rad(-eulerAngles.x));
+	ret.rotate(Vector3(1, 0, 0), Math::deg2rad(-eulerAngles.x));
 	ret.rotate(Vector3(0, 1, 0), Math::deg2rad(-eulerAngles.y));
-	ret.rotate(Vector3(0, 0, 1), Math::deg2rad(-eulerAngles.z));*/
+	ret.rotate(Vector3(0, 0, 1), Math::deg2rad(-eulerAngles.z));
 	ret.normalize();
 	ret *= gravityScale * body->get_gravity_scale();
 	return ret;

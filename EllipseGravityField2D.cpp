@@ -11,10 +11,12 @@ void EllipseGravityField2D::_bind_methods()
 
 Vector2 EllipseGravityField2D::calcForce(RigidBody2D* body)
 {
-	Vector2 diff = get_global_position() - body->get_global_position();
-	diff = Vector2(diff.x / axes.x, diff.y / axes.y);
+	Vector2 diff = body->get_global_position() - get_global_position();
+	//diff = Vector2(diff.x / axes.x, diff.y / axes.y);
+
+	diff = Vector2(diff.x, diff.y / (axes.y * axes.y));
 	diff.normalize();
-	diff *= gravityScale * body->get_gravity_scale();
+	diff *= -gravityScale * body->get_gravity_scale();
 	return diff;
 }
 
