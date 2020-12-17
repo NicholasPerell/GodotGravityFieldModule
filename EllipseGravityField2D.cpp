@@ -22,7 +22,7 @@ Vector2 EllipseGravityField2D::calcForce(RigidBody2D* body)
 
 	Vector2 pointA;
 
-	pointA = (a == axes.x) ? Vector2(a * exp(2) * diff.x, 0) : Vector2(0, a * exp(2) * diff.y);
+	pointA = (a == axes.x) ? Vector2(a * exp(2) * diff.normalized().x, 0) : Vector2(0, a * exp(2) * diff.normalized().y);
 
 	//float phi = Math::atan2(diff.y * a * a, diff.x * b * b);
 
