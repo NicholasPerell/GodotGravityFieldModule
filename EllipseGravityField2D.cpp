@@ -22,7 +22,7 @@ Vector2 EllipseGravityField2D::calcForce(RigidBody2D* body)
 
 	float phi = Math::atan2(diff.y * a * a, diff.x * b * b);
 
-	Vector2 dir = -Vector2(cos(phi), sin(phi));
+	Vector2 dir = Vector2(cos(phi), sin(phi));
 
 	dir *= -gravityScale * body->get_gravity_scale();
 	return dir;
