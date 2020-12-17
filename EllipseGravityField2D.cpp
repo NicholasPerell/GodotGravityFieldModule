@@ -15,14 +15,11 @@ Vector2 EllipseGravityField2D::calcForce(RigidBody2D* body)
 	Vector2 diff = body->get_global_position() - get_global_position();
 	//diff = Vector2(diff.x / axes.x, diff.y / axes.y);
 
-	float a, b;
-
-	a = (axes.x > axes.y) ? axes.x : axes.y; //A is the major radius, B is the minor one
-	b = (axes.x < axes.y) ? axes.x : axes.y;
+	
 
 	Vector2 pointA;
 
-	pointA = (a == axes.x) ? Vector2(a * exp(2) * diff.normalized().x, 0) : Vector2(0, a * exp(2) * diff.normalized().y);
+	pointA = (axes.x > axes.y) ? Vector2(axes.x * exp(2) * diff.normalized().x, 0) : Vector2(0, axes.y * exp(2) * diff.normalized().y);
 
 	//float phi = Math::atan2(diff.y * a * a, diff.x * b * b);
 
