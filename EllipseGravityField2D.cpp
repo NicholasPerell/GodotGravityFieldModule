@@ -17,12 +17,17 @@ Vector2 EllipseGravityField2D::calcForce(RigidBody2D* body)
 
 	float a, b;
 
-	(axes.x > axes.y) ? a = axes.x : a = axes.y; //A is the major radius, B is the minor one
-	(axes.x < axes.y) ? b = axes.x : b = axes.y;
+	a = (axes.x > axes.y) ? axes.x : axes.y; //A is the major radius, B is the minor one
+	b = (axes.x < axes.y) ? axes.x : axes.y;
 
-	float phi = Math::atan2(diff.y * a * a, diff.x * b * b);
+	Vector2 pointA;
 
-	Vector2 dir = Vector2(cos(phi), sin(phi));
+	pointA = (a == axes.x) ? Vector2(a * exp(2) * diff.x, 0) : Vector2(0, a * exp(2) * diff.y);
+
+	//float phi = Math::atan2(diff.y * a * a, diff.x * b * b);
+
+	Vector2 dir = diff - pointA;
+	dir.normalize();
 
 	dir *= -gravityScale * body->get_gravity_scale();
 	return dir;
