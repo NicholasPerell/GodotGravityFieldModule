@@ -12,7 +12,7 @@ Vector3 CubeGravityField::calcForce(RigidBody *body) {
 
 
 
-	std::cout << "x: "<<difference.x << "y:" << difference.y << "z:"<< difference.z << "\n";
+	//std::cout << "x: "<<difference.x << "y:" << difference.y << "z:"<< difference.z << "\n";
 
 
 	difference.x /= width;
@@ -31,7 +31,7 @@ Vector3 CubeGravityField::calcForce(RigidBody *body) {
 	
 	
 
-	std::cout << "Ret x" << ret.x << " y" << ret.y << " z" << ret.z << "\n";
+	//std::cout << "Ret x" << ret.x << " y" << ret.y << " z" << ret.z << "\n";
 	ret.normalize();
 	ret *= gravityScale;
 

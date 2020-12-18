@@ -9,15 +9,15 @@ Vector3 ArchGravityField::calcForce(RigidBody *body) {
 
 
 	//ROTATE NEEDS TO BE FIXED FOR 3D
-	ret.rotate(Vector3(0,0,1),Math::deg2rad(eulerAngles.z));
+	/*ret.rotate(Vector3(0,0,1),Math::deg2rad(eulerAngles.z));
 	ret.rotate(Vector3(0,1,0),Math::deg2rad(eulerAngles.y));
-	ret.rotate(Vector3(1,0,0),Math::deg2rad(eulerAngles.x));
+	ret.rotate(Vector3(1,0,0),Math::deg2rad(eulerAngles.x));*/
 
-	ret = Vector3(ret.x / axes.x, ret.y / axes.y,0);
+	ret = Vector3(ret.x, ret.y,0);
 
-	ret.rotate(Vector3(1, 0, 0), Math::deg2rad(-eulerAngles.x));
+	/*ret.rotate(Vector3(1, 0, 0), Math::deg2rad(-eulerAngles.x));
 	ret.rotate(Vector3(0, 1, 0), Math::deg2rad(-eulerAngles.y));
-	ret.rotate(Vector3(0, 0, 1), Math::deg2rad(-eulerAngles.z));
+	ret.rotate(Vector3(0, 0, 1), Math::deg2rad(-eulerAngles.z));*/
 	ret.normalize();
 	ret *= gravityScale * body->get_gravity_scale();
 	return ret;
@@ -45,11 +45,11 @@ Vector3 ArchGravityField::getRotation() {
 
 //Bind getters and setters and add paramters as property
 void ArchGravityField::_bind_methods() {
-	ClassDB::bind_method(D_METHOD("setAxes", "axes"), &ArchGravityField::setAxes);
-	ClassDB::bind_method(D_METHOD("getAxes"), &ArchGravityField::getAxes);
-	ClassDB::bind_method(D_METHOD("setRotation", "rotation"), &ArchGravityField::setRotation);
-	ClassDB::bind_method(D_METHOD("getRotation"), &ArchGravityField::getRotation);
+	//ClassDB::bind_method(D_METHOD("setAxes", "axes"), &ArchGravityField::setAxes);
+	//ClassDB::bind_method(D_METHOD("getAxes"), &ArchGravityField::getAxes);
+	//ClassDB::bind_method(D_METHOD("setRotation", "rotation"), &ArchGravityField::setRotation);
+	//ClassDB::bind_method(D_METHOD("getRotation"), &ArchGravityField::getRotation);
 
-	ADD_PROPERTY(PropertyInfo(Variant::VECTOR2, "axes", PROPERTY_HINT_RANGE, "0,1024,0.001"), "setAxes", "getAxes");
-	ADD_PROPERTY(PropertyInfo(Variant::VECTOR3, "rotation", PROPERTY_HINT_RANGE, "-1024,1024,0.001"), "setRotation", "getRotation");
+//	ADD_PROPERTY(PropertyInfo(Variant::VECTOR2, "axes", PROPERTY_HINT_RANGE, "0,1024,0.001"), "setAxes", "getAxes");
+	//ADD_PROPERTY(PropertyInfo(Variant::VECTOR3, "rotation", PROPERTY_HINT_RANGE, "-1024,1024,0.001"), "setRotation", "getRotation");
 }

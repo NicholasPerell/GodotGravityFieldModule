@@ -9,17 +9,17 @@ Vector3 DiskGravityField::calcForce(RigidBody *body) {
 
 	float innerRadius = radius - thickness / 2;
 
-	Vector3 bodyPos = body->get_translation();
-	Vector2 flatDiff = Vector2(get_translation().x - bodyPos.x, get_translation().y - bodyPos.y);
+	Vector3 bodyPos = body->get_global_transform().get_origin();
+	Vector2 flatDiff = Vector2(get_global_transform().get_origin().x - bodyPos.x, get_global_transform().get_origin().z - bodyPos.z);
 	if (flatDiff.length() <= innerRadius)
 	{
-		ret = Vector3(0, 0, get_translation().z - bodyPos.z);
+		ret = Vector3(0, get_global_transform().get_origin().y - bodyPos.y, 0);
 	}
 	else
 	{
 		flatDiff.normalize();
-		flatDiff *= innerRadius;
-		ret = (get_translation() - Vector3(flatDiff.x, flatDiff.y, 0)) - bodyPos;
+		flatDiff *= -innerRadius;
+		ret = Vector3(flatDiff.x + get_global_transform().get_origin().x, get_global_transform().get_origin().y, flatDiff.y + get_global_transform().get_origin().z) - bodyPos;
 	}
 
 	ret.normalize();
