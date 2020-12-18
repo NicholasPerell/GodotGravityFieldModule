@@ -19,7 +19,7 @@ Vector3 DiskGravityField::calcForce(RigidBody *body) {
 	{
 		flatDiff.normalize();
 		flatDiff *= -innerRadius;
-		ret = -(bodyPos - Vector3(flatDiff.x + get_global_transform().get_origin().x, get_global_transform().get_origin().y, flatDiff.y + get_global_transform().get_origin().z));
+		ret = Vector3(flatDiff.x + get_global_transform().get_origin().x, get_global_transform().get_origin().y, flatDiff.y + get_global_transform().get_origin().z) - bodyPos;
 	}
 
 	ret.normalize();
