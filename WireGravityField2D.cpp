@@ -1,3 +1,7 @@
+/*
+Not fully functional. Left in codebase to show progress
+*/
+
 #include "WireGravityField2D.h"
 #include <core\engine.h>
 #include <scene\3d\physics_body.h>
@@ -72,5 +76,5 @@ void WireGravityField2D::_bind_methods() {
 	ADD_PROPERTY(PropertyInfo(Variant::VECTOR2, "a"), "set_a", "get_a");
 	ADD_PROPERTY(PropertyInfo(Variant::VECTOR2, "b"), "set_b", "get_b");
 
-	ADD_PROPERTY(PropertyInfo(Variant::OBJECT, "Line Shape", PROPERTY_HINT_RESOURCE_TYPE, "SegmentShape2D"), "setTheLine", "getTheLine");
+	
 }
